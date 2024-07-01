@@ -29,4 +29,7 @@ class Persona extends Model
 
     // Desactivar las marcas de tiempo si no se usan
     public $timestamps = true;
+
+    // Definir la clave primaria personalizada
+    protected $primaryKey = 'nPerCodigo';
 }

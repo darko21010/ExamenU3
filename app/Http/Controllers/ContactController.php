@@ -4,25 +4,40 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ContactRequest;
+
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\ContactMail;
+
 class ContactController extends Controller
 {
-    public function showForm()
+    public function show()
     {
         return view('contact');
     }
 
-    public function submitForm(Request $request)
+    public function submit(ContactRequest $request)
     {
         // Validar la solicitud
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'subject' => 'required',
             'message' => 'required'
         ]);
 
-        // Procesar la solicitud (por ejemplo, enviar un correo)
-        // Mail::to('admin@example.com')->send(new ContactMail($request->all()));
-        
-        return redirect()->back()->with('success', 'Thank you for contacting us!');
+        // Datos del correo
+        $details = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        // Enviar correo
+        Mail::to('t012700120@unitru.edu.pe')->send(new ContactMail($details));
+
+        return redirect()->route('contact.show')->with('success', 'Mensaje enviado correctamente.');
     }
 }

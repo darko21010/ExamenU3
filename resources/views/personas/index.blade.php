@@ -23,6 +23,12 @@
     <h1>Listado de Personas</h1>
     @include('menu')
 
+    @if (session('success'))
+        <div>
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
+
     <table>
         <thead>
             <tr>
@@ -38,6 +44,7 @@
                 <th>Sexo</th>
                 <th>Creado</th>
                 <th>Actualizado</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -55,6 +62,14 @@
                     <td>{{ $persona->cPerSexo }}</td>
                     <td>{{ $persona->created_at }}</td>
                     <td>{{ $persona->updated_at }}</td>
+                    <td>
+                        <a href="{{ route('personas.edit', $persona->nPerCodigo) }}">Editar</a>
+                        <form action="{{ route('personas.destroy', $persona->nPerCodigo) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar esta persona?');">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

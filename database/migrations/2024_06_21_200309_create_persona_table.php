@@ -35,7 +35,7 @@ return new class extends Migration
             $table->date('dPerFecNac')->nullable();
             $table->integer('nPerEdad')->nullable(); // No auto-increment
             $table->decimal('nPerSueldo', 6, 2);
-            $table->string('cPerRnd', 50);
+            $table->string('cPerRnd', 50)->default('defaultRndValue');
             $table->char('nPerEstado', 1)->default('1');
             $table->string('remember_token', 100)->nullable();
             //$table->timestamps();
