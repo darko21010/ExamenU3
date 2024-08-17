@@ -1,0 +1,9 @@
+.menu-item {
+    color: blue;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.menu-item.active {
+    color: purple;
+}

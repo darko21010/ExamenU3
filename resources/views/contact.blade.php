@@ -4,11 +4,14 @@
     <title>Contacto</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100">
     <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-10">
         <div class="px-6 py-4">
             <h2 class="text-gray-800 text-3xl font-semibold mb-4">CONTACTO</h2>
 
+            USUARIO, USTED SE ENCUENTRA EN LA OPCION DE CONTACTO!!!!!
+            
             @include('menu')
 
             @if(session('success'))

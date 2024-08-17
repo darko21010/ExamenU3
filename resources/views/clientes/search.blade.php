@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buscar Persona para Editar</title>
+    <title>Buscar Cliente para Editar</title>
 </head>
 <body>
-    <h1>Buscar Persona para Editar</h1>
+    <h1>Buscar Cliente para Editar</h1>
     @include('menu')
 
     @if ($errors->any())
@@ -17,10 +17,10 @@
         </div>
     @endif
 
-    <form action="{{ route('personas.findForEdit') }}" method="POST">
+    <form action="{{ route('clientes.findForEdit') }}" method="POST">
         @csrf
-        <label for="nPerCodigo">ID de la Persona:</label>
-        <input type="number" id="nPerCodigo" name="nPerCodigo" required>
+        <label for="id">ID del Cliente:</label>
+        <input type="number" id="id" name="id" required>
         <button type="submit">Buscar</button>
     </form>
 </body>

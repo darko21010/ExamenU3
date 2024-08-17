@@ -12,12 +12,15 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::table('persona', function (Blueprint $table) {
-            $table->char('cPerSexo', 15)->default('Masculino')->nullable()->after('nPerEdad')->nullable();
-            //
-        });
-    }
+{
+    Schema::create('servicios', function (Blueprint $table) {
+        $table->id();
+        $table->string('titulo');
+        $table->text('descripcion');
+        $table->string('imagen');
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -26,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('persona', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('servicios');
     }
 };

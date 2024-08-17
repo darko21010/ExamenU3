@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Inicio</title>
-</head>
-<body>
-    <h1> Bienvenido a la página de inicio </h1>
-    @include('menu')
-</body>
-</html>
+@extends('layout')
+
+@section('title', 'Home')
+
+@section('content')
+    <h1>Bienvenido al menu de INICIO</h1>
+    <p>Este es un mensaje de bienvenida para todos los usuarios.</p>
+    @auth
+        <p>Hola, {{ auth()->user()->name }}. ¡Bienvenido de nuevo!</p>
+    @endauth
+@endsection
